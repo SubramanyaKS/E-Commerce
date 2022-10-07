@@ -5,6 +5,7 @@ import About from './components/About';
 import Footer from './components/Footer';
 import Login from './components/Login';
 import NavBar from './components/Navbar';
+import SignUp from './components/SignUp';
 function App() {
   return (
     <BrowserRouter>
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Index />}/>
         <Route path="/about" element={<About />}/>
         <Route path="/login" element={<Login />}/>
+        <Route path="/signup" element={<SignUp />}/>
       </Routes>
       <Footer/>
     </BrowserRouter>
