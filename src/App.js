@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Login from './components/Login';
 import NavBar from './components/Navbar';
 import SignUp from './components/SignUp';
+import UserSucess from './components/UserSucess';
 function App() {
   return (
     <BrowserRouter>
@@ -15,6 +16,7 @@ function App() {
         <Route path="/about" element={<About />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/signup" element={<SignUp />}/>
+        <Route path="/usersucess" element={<UserSucess />}/>
       </Routes>
       <Footer/>
     </BrowserRouter>
