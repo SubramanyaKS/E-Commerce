@@ -4,7 +4,8 @@ import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import {FaShoppingCart} from '@react-icons/all-files/fa/FaShoppingCart'
-import {FcSearch} from '@react-icons/all-files/fc/FcSearch'
+import {FcSearch} from '@react-icons/all-files/fc/FcSearch';
+import 'bootstrap/dist/css/bootstrap.css';
 const NavBar =()=>{
   /*const LogoutU=()=>{
     sessionStorage.removeItem('uid');
