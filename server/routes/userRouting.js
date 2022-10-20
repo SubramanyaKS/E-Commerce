@@ -2,7 +2,7 @@ const express = require('express');
 const userController= require('../controllers/userController');
 const userrouting = express.Router();
 
-userrouting.get('/all', userController.getUser);
+userrouting.get('/', userController.getUser);
 userrouting.post('/', userController.newUser);
 userrouting.put('/:id', userController.updateUser);
 userrouting.get('/:id', userController.getUserId);
