@@ -74,7 +74,7 @@ exports.newUser = async (req, res) => {
                    name: req.body.name,
                    password: req.body.password,
                    gender: req.body.gender,
-                   dob: req.body.dob,
+                   dob: req.body.dateOfBirth,
                    email: req.body.email,
                    mobileNumber: req.body.mobileNumber,
                    pincode: req.body.pincode,
