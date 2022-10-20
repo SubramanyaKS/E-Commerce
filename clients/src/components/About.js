@@ -1,5 +1,5 @@
 import Card from 'react-bootstrap/Card';
-import './css/About.css'
+import './css/About.css';
 const About = ()=>{
     return(
         <div className="about">
