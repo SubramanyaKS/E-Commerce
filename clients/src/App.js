@@ -7,7 +7,7 @@ import Login from './components/Login';
 import NavBar from './components/Navbar';
 import SignUp from './components/SignUp';
 import UserSucess from './components/UserSucess';
-
+import 'bootstrap/dist/css/bootstrap.css';
 function App() {
   return (
     <BrowserRouter>
