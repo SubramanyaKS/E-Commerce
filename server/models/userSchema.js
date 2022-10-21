@@ -67,10 +67,10 @@ mongoose
     }
   );
 
-  userSchema.pre('save', function(next){
-    this.password = bcrypt.hashSync(this.password, saltRounds);
-    next();
-    });
+  // userSchema.pre('save', function(next){
+  //   this.password = bcrypt.hashSync(this.password, saltRounds);
+  //   next();
+  //   });
   const UserModel = mongoose.model('user', userSchema);
   // eslint-disable-next-line no-undef
   module.exports = UserModel;
