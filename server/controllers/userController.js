@@ -61,18 +61,24 @@ exports.getUser = async (req, res) => {
 exports.newUser = async (req, res) => { 
     try {
        if (validators.ValidateName(req.body.name)) {
-         if(validators.ValidateAge(req.body.dob)){
+         if(validators.ValidateAge(req.body.dateOfBirth)){
            if(validators.ValidatePassword(req.body.password)){
-             console.log(req.body.pincode);
+             console.log("Pincode",req.body.pincode);
+             console.log(req.body.gender,"",req.body);
              if(validators.ValidateGender(req.body.gender)){
+              console.log("Hi gender");
                if(validators.ValidatePhoneNo(req.body.mobileNumber)){
+                console.log("Mobile");
                  if(validators.ValidatePincode(req.body.pincode)) {
-                   
+                  console.log("Hi");
                    const Id = await helper.generateUserId();
+                   console.log(Id);
+                   const hashPassword = await bcrypt.hash(req.body.password,10);
+
                    const newUser = await User.create({
                    userID: Id,
                    name: req.body.name,
-                   password: req.body.password,
+                   password: hashPassword,
                    gender: req.body.gender,
                    dob: req.body.dateOfBirth,
                    email: req.body.email,
@@ -82,12 +88,15 @@ exports.newUser = async (req, res) => {
                    state: req.body.state,
                    country: req.body.country,
                  });
+                 console.log(newUser,"new Data");
+                 //newUser=JSON.stringify(newUser);
+                 console.log(newUser,"new super Data");
                    res.status(201).json({
-                     status: 'success',
-                     data: {
+                  data:
                        newUser,
-                     },
+                  
                    });
+                   //console.log(res.data);
                  }
                  else{
                    res.status(400).json({
@@ -136,7 +145,7 @@ exports.newUser = async (req, res) => {
      } catch (err) {
        res.status(404).json({
          status: 'fail',
-         message: err,
+         message: err.message,
        });
      }
 };
@@ -145,32 +154,54 @@ exports.newUser = async (req, res) => {
  exports.userLogin=async(req, res)=>{
    try{
      const b=await User.findOne({userId:req.body.userId});
-     //console.log(b.password);
+     if(!b){
+       throw createError(404,'User not found');
+
+     }
+     console.log(b.password,"Password");
+     let match = await bcrypt.compare(req.body.password, b.password);
+     if(match){
+      console.log("Password matches!")
+            res.status(200).send(true);
+     }
+     else{
+        console.log("Password doesn't match!")
+          res.status(400).json({
+             message: `Password doesnot match `,
+          });
+     }
+        // .then(result => {
+        //     console.log(result);
+        //     res.send(result);
+        // })
+        // .catch(err => {
+        //     console.log(err)
+        // })
     // const hash = bcrypt.hash(req.body.password, 10);
      //console.log(hash)
-     bcrypt.compare(req.body.password, b.password, function(error, isMatch) {
-       if (error) {
-         throw error
-       } else if (!isMatch) {
-         //console.log("Password doesn't match!")
+    //  bcrypt.compare(req.body.password, b.password, function(error, isMatch) {
+    //    if (error) {
+    //      throw error
+    //    } else if (isMatch) {
+    //      console.log("Password doesn't match!")
          
-         res.status(400).json({
-             message: `Password doesnot match `,
+    //      res.status(400).json({
+    //          message: `Password doesnot match `,
          
-         });
-       } else {
-         //console.log("Password matches!")
-         res.status(200).send(true);
+    //      });
+    //    } else {
+    //      console.log("Password matches!")
+    //      res.status(200).send(true);
  
-       }
-     })
+    //    }
+    //  })
      
  
    }
    catch(err){
      res.status(404).json({
        status: 'fail',
-       message: err,
+       message: err.message,
      });
    }
  
