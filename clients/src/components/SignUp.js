@@ -104,17 +104,18 @@ const SignUp = () => {
       //setFormError(formError);
       error = "error";
     }
-
+//Maria@123
+//UI-0013
     if (error !== "error") {
      await axios.post("http://localhost:4000/users/", users)
       
         .then((response) => {
           console.log("Hi res");
           
-          console.log(response.data);
-          console.log(Object.values(response.data.data.userID));
-          setUser([...user, response.data]);
-          navigate("/usersucess", { state: { id: response.data.userID } });
+          console.log("Data:",response.data);
+          console.log("User ID",response.data.userID);
+          //setUser([...user, response.data]);
+          navigate("/usersucess" ,{ state: { id: response.data.userID } });
           setSuccesMsg(
             "New Bookings has been added with the book id " + response.data.userID
           );
