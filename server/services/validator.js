@@ -15,6 +15,8 @@ exports.ValidateName = function (name) {
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
         age--;
     }
+    console.log(age);
+    console.log(today,"",birthDate,"",date);
     if (age > 20 && age<100) {
       return true;
     }
@@ -30,7 +32,7 @@ exports.ValidatePassword = function (password) {
 };
 // eslint-disable-next-line no-undef
 exports.ValidatePhoneNo = function (number) {
-  if (number.trim().length == 10) {
+  if (String(number).trim().length == 10) {
     //console.log(number);
     return true;
   }
@@ -48,7 +50,7 @@ exports.ValidatePincode = function (number) {
 // eslint-disable-next-line no-undef
 exports.ValidateGender = function (gender) {
   console.log(gender);
-  if (gender=="M"|| gender=="F") {
+  if (gender=="Male"|| gender=="female") {
     //console.log(password);
     return true;
   }
