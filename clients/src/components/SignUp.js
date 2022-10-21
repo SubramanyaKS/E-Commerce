@@ -50,7 +50,7 @@ const SignUp = () => {
       });
   }, []);
 
-  const handleAddSubmit = (event) => {
+  const handleAddSubmit = async (event) => {
     event.preventDefault();
     var ed = new Date(users.dateOfBirth);
     var today = new Date();
@@ -106,13 +106,17 @@ const SignUp = () => {
     }
 
     if (error !== "error") {
-      axios
-        .post("http://localhost:4000/users", users)
+     await axios.post("http://localhost:4000/users/", users)
+      
         .then((response) => {
+          console.log("Hi res");
+          
+          console.log(response.data);
+          console.log(Object.values(response.data.data.userID));
           setUser([...user, response.data]);
-          navigate("/usersucess", { state: { id: response.data.id } });
+          navigate("/usersucess", { state: { id: response.data.userID } });
           setSuccesMsg(
-            "New Bookings has been added with the book id " + response.data.id
+            "New Bookings has been added with the book id " + response.data.userID
           );
         })
         .catch((error) => {
