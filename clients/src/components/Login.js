@@ -4,9 +4,8 @@ import { Card } from "react-bootstrap";
 import './css/Login.css';
 import { Row } from "react-bootstrap";
 import {FaUser} from '@react-icons/all-files/fa/FaUser';
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import axios from 'axios';
-import { useIsRTL } from "react-bootstrap/esm/ThemeProvider";
 
 const Login = () => {
   //const [user, setUser] = useState([]);
@@ -21,7 +20,7 @@ const Login = () => {
     await axios.post("http://localhost:4000/users/login",users)
     .then((res)=>{
       console.log(res.data);
-      if(res.data===true){
+      if(res.data){
         sessionStorage.setItem("uid",users.userID);
       sessionStorage.setItem("uAuthenticated",true);
       window.location.href = "/home";
