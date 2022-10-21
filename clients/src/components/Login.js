@@ -6,60 +6,43 @@ import { Row } from "react-bootstrap";
 import {FaUser} from '@react-icons/all-files/fa/FaUser';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useIsRTL } from "react-bootstrap/esm/ThemeProvider";
 
 const Login = () => {
-  const [user, setUser] = useState([]);
+  //const [user, setUser] = useState([]);
   const [error, setError]=useState({idError:"",passwordError:" "});
-  const [users, setUsers] = useState({ id: "", password: ""});
+  const [users, setUsers] = useState({ userID: "", password: ""});
   const [errorMsg, setErrorMsg] = useState("");
   const [valid, setValid]=useState(false);
-  useEffect(() => {
-    axios.get("http://localhost:4000/users")
-      .then((response) => { setUser(response.data) })
-      .catch((error) => { console.log(error) })
-  }, [])
+  
 
-  function login(event){
+  const userLogin= async (event)=>{
     event.preventDefault();
-    console.log("User",users.password);
-    if(users.password.length<=0){
-      console.log("User",users.password);
-      console.log("Error",error.passwordError)
-      error.passwordError="Password is Required"
-      console.log("Error",error.passwordError)
-
-      setError({...error,[error.passwordError]:error.passwordError});
-    }else{
-    console.log("Error",error.passwordError)
-
-    var id=users.id;
-    console.log(id);
-
-    var password = users.password;
-    console.log(password);
-
-    let emp = user.find(
-      function (el) {
-
-        console.log(el.id);
-        return (String(el.id) === id && String(el.password)===password);
-        
-      }  
-    )
-    console.log(emp!=null);
-    if(emp!=null){
-      sessionStorage.setItem("uid",id);
+    await axios.post("http://localhost:4000/users/login",users)
+    .then((res)=>{
+      console.log(res.data);
+      if(res.data===true){
+        sessionStorage.setItem("uid",users.userID);
       sessionStorage.setItem("uAuthenticated",true);
-      window.location.href = "/userHome";
-    }
-    else{
-      setErrorMsg("Invalid Credentials");
-    }
-  }
+      window.location.href = "/home";
+      }
+    })
+    //UI-0000
+    //Subbu@123
+    //   method:"POST",
+    //   body:users,
+    //   headers:{
+    //     'Content-Type':'application/json',
+    //     "Access-Control-Allow-Origin": "*"
+    //   }
+    // });
+    // console.log("Result",result);
+
+
   }
   const handleChange = (event) => {
     setUsers({ ...users, [event.target.name]: event.target.value })
-    if(users.id.length>0 && users.password.length>0){
+    if(users.userID.length>0 && users.password.length>0){
       setValid(true);
     }
     
@@ -72,10 +55,10 @@ const Login = () => {
       <Card  border="primary" style={{ width: '20em',backgroundColor:"aqua",alignContent:"center" }}>
         <Card.Body>
         <FaUser style={{fontSize:"50px", alignContent:"center",marginLeft:"45%" }}/><br/><br/>
-          <Form onSubmit={login}>
+          <Form onSubmit={userLogin}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>UserId</Form.Label>
-              <Form.Control name="id" value={users.id}  required onChange={handleChange} type="text" placeholder="Enter User Id" />
+              <Form.Control name="userID" value={users.userID}  required onChange={handleChange} type="text" placeholder="Enter User Id" />
               <Form.Text className="text-muted">
              {error.idError}
               </Form.Text>
