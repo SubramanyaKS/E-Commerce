@@ -91,11 +91,11 @@ exports.newUser = async (req, res) => {
                  console.log(newUser,"new Data");
                  //newUser=JSON.stringify(newUser);
                  console.log(newUser,"new super Data");
-                   res.status(201).json({
-                  data:
+                   res.status(201).json(
+
                        newUser,
                   
-                   });
+                   );
                    //console.log(res.data);
                  }
                  else{
@@ -153,13 +153,17 @@ exports.newUser = async (req, res) => {
  // User Login
  exports.userLogin=async(req, res)=>{
    try{
-     const b=await User.findOne({userId:req.body.userId});
-     if(!b){
-       throw createError(404,'User not found');
+     const b=await User.findOne({userID:req.body.userID});
+     console.log(b)
+     if(b==null){
+       throw new Error("Not found");
+
 
      }
      console.log(b.password,"Password");
      let match = await bcrypt.compare(req.body.password, b.password);
+     console.log(req.body.password);
+     console.log(match);
      if(match){
       console.log("Password matches!")
             res.status(200).send(true);
