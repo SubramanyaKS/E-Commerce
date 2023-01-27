@@ -1,8 +1,14 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './css/index.css';
+import { useNavigate } from "react-router";
 
 const Item=({name,price,category,color,description,image,id})=>{
+  const navigate= new useNavigate();
+  const AddCart=()=>{
+    alert("added");
+    navigate("/login");
+  }
     return(
         <div class="mb-3">
             
@@ -18,7 +24,7 @@ const Item=({name,price,category,color,description,image,id})=>{
         <Card.Text><b>Category: </b>{category}</Card.Text>
         <Card.Text><b>Color: </b>{color}</Card.Text>
         <Card.Text><b>Price: </b>{price}</Card.Text>
-        <Button variant="primary">Add to Cart</Button>
+        <Button onClick={AddCart} variant="primary">Add to Cart</Button>
       </Card.Body>
     </Card>
         </div>
