@@ -8,3 +8,5 @@ E-commerce website using React js and node js
 * Express JS
 
 **Note: This Project is in Development Stage**
+
+currently frontEnd part is in development phase with json-server has backend.
