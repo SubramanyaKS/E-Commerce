@@ -70,6 +70,7 @@ const Login = () => {
             </Button>
             {(errorMsg) ? <p style={{color:"red"}}>{errorMsg}</p> : null}
           </Form>
+          <p>Not Registeried? <a href="/signup">Register</a></p>
         </Card.Body>
       </Card>
       </Row>
