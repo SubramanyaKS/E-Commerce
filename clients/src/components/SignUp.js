@@ -279,6 +279,7 @@ const SignUp = () => {
               {(!successMsg) ? <div>{successMsg}</div> : null}
               {(!errorMsg) ? <div>{errorMsg}</div> : null}
             </Form>
+            <p>Already Registeried? <a href="/login">Login</a></p>
           </Card.Body>
         </Card>
       </Row>
