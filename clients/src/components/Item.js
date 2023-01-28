@@ -6,8 +6,14 @@ import { useNavigate } from "react-router";
 const Item=({name,price,category,color,description,image,id})=>{
   const navigate= new useNavigate();
   const AddCart=()=>{
-    alert("added");
-    navigate("/login");
+    let u = sessionStorage.getItem("uAuthenticated");
+    if(u){
+      alert("added");
+    }
+    else{
+      navigate("/login");
+    }
+    
   }
     return(
         <div class="mb-3">
