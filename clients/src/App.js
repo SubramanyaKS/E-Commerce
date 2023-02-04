@@ -6,11 +6,11 @@ import Footer from './components/Footer';
 import Login from './components/Login';
 import NavBar from './components/Navbar';
 import SignUp from './components/SignUp';
-import SellerHome from './components/SellerHome';
+import SellerHome from './pages/seller/SellerHome';
 import UserSucess from './components/UserSucess';
 import 'bootstrap/dist/css/bootstrap.css';
-import SellerLogin from './components/SellerLogIn';
-import SellerSignUp from './components/SellerSignUp';
+import SellerLogin from './pages/seller/SellerLogIn';
+import SellerSignUp from './pages/seller/SellerSignUp';
 
 function App() {
   return (
