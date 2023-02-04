@@ -7,28 +7,37 @@ import {FaUser} from '@react-icons/all-files/fa/FaUser';
 import { useState} from 'react';
 import axios from 'axios';
 const SellerLogin=()=>{
-    const [error, setError]=useState({idError:"",passwordError:" "});
-    const [users, setUsers] = useState({ sellerID: "", password: ""});
+    const [error, setError]=useState({emailError:"",passwordError:" "});
+    const [seller, setSeller] = useState({ email: "", password: ""});
     const [errorMsg, setErrorMsg] = useState("");
     const [valid, setValid]=useState(false);
     
-    const userLogin= async (event)=>{
+    const sellerLogin= async (event)=>{
       event.preventDefault();
-      await axios.post("http://localhost:4000/seller/login",users)
+      await axios.post("http://localhost:4000/seller/",seller)
       .then((res)=>{
         console.log(res.data);
         if(res.data){
-          sessionStorage.setItem("sid",users.sellerID);
+          sessionStorage.setItem("sid",seller.email);
         sessionStorage.setItem("sAuthenticated",true);
         window.location.href = "/seller";
+        }
+        else{
+          setErrorMsg("Enter Valid Credentials");
         }
       })
 
     }
     const handleChange = (event) => {
-      setUsers({ ...users, [event.target.name]: event.target.value })
-      if(users.userID.length>0 && users.password.length>0){
+      setSeller({ ...seller, [event.target.name]: event.target.value })
+      if(seller.email.length()>0 && seller.password.length()>0){
         setValid(true);
+      }
+      else if(seller.email.length()<0){
+        setError({...error,emailError:"Enter Valid Email"});
+      }
+      else{
+        setErrorMsg("Enter valid Credential");
       }
       
     }
@@ -40,18 +49,18 @@ const SellerLogin=()=>{
         <Card  border="primary" style={{ width: '20em',backgroundColor:"aqua",alignContent:"center" }}>
           <Card.Body>
           <FaUser style={{fontSize:"50px", alignContent:"center",marginLeft:"45%" }}/><br/><br/>
-            <Form onSubmit={userLogin}>
+            <Form onSubmit={sellerLogin}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Seller Id</Form.Label>
-                <Form.Control name="sellerID" value={users.sellerID}  required onChange={handleChange} type="text" placeholder="Enter User Id" />
+                <Form.Label>Seller Email</Form.Label>
+                <Form.Control name="email" value={seller.email}  required onChange={handleChange} type="text" placeholder="Enter User Id" />
                 <Form.Text className="text-muted">
-               {error.idError}
+               {error.emailError}
                 </Form.Text>
               </Form.Group>
   
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control name="password" value={users.password} onChange={handleChange} type="password" placeholder="Password" />
+                <Form.Control name="password" value={seller.password} onChange={handleChange} type="password" placeholder="Password" />
               <Form.Text className="text-muted"> {error.passwordError}</Form.Text>
               </Form.Group>
   
