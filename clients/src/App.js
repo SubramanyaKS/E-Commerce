@@ -11,6 +11,7 @@ import UserSucess from './components/UserSucess';
 import 'bootstrap/dist/css/bootstrap.css';
 import SellerLogin from './pages/seller/SellerLogIn';
 import SellerSignUp from './pages/seller/SellerSignUp';
+import AddProduct from './components/AddProduct';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/seller-login" element={<SellerLogin/>}/>
         <Route path="seller-signup" element={<SellerSignUp/>} />
         <Route path="/signup" element={<SignUp />}/>
+        <Route path="/addproduct" element={<AddProduct />}/>
       </Routes>
       <Footer/>
     </BrowserRouter>
