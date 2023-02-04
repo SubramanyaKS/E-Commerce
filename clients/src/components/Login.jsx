@@ -9,8 +9,8 @@ import axios from 'axios';
 
 const Login = () => {
   //const [user, setUser] = useState([]);
-  const [error, setError]=useState({idError:"",passwordError:" "});
-  const [users, setUsers] = useState({ userID: "", password: ""});
+  const [error, setError]=useState({emailError:"",passwordError:" "});
+  const [users, setUsers] = useState({ email: "", password: ""});
   const [errorMsg, setErrorMsg] = useState("");
   const [valid, setValid]=useState(false);
   
@@ -23,6 +23,9 @@ const Login = () => {
         sessionStorage.setItem("uid",users.userID);
       sessionStorage.setItem("uAuthenticated",true);
       window.location.href = "/home";
+      }
+      else{
+        setErrorMsg("Enter Valid Credentials");
       }
     })
     //UI-0000
@@ -38,8 +41,11 @@ const Login = () => {
   }
   const handleChange = (event) => {
     setUsers({ ...users, [event.target.name]: event.target.value })
-    if(users.userID.length>0 && users.password.length>0){
+    if(users.email.length()>0 && users.password.length()>0){
       setValid(true);
+    }
+    else if(users.email.length()<0){
+      setError({...error,emailError:"Enter valid Email"})
     }
     
   }
@@ -53,8 +59,8 @@ const Login = () => {
         <FaUser style={{fontSize:"50px", alignContent:"center",marginLeft:"45%" }}/><br/><br/>
           <Form onSubmit={userLogin}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>UserId</Form.Label>
-              <Form.Control name="userID" value={users.userID}  required onChange={handleChange} type="text" placeholder="Enter User Id" />
+              <Form.Label>User Email</Form.Label>
+              <Form.Control name="email" value={users.email}  required onChange={handleChange} type="email" placeholder="Enter User Id" />
               <Form.Text className="text-muted">
              {error.idError}
               </Form.Text>
