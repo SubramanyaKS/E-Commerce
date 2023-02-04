@@ -30,7 +30,7 @@ const SellerLogin=()=>{
     }
     const handleChange = (event) => {
       setSeller({ ...seller, [event.target.name]: event.target.value })
-      if(seller.email.length()>0 && seller.password.length()>0){
+      if(seller.email.length>0 && seller.password.length>0){
         setValid(true);
       }
       else if(seller.email.length()<0){
@@ -52,7 +52,7 @@ const SellerLogin=()=>{
             <Form onSubmit={sellerLogin}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Seller Email</Form.Label>
-                <Form.Control name="email" value={seller.email}  required onChange={handleChange} type="text" placeholder="Enter User Id" />
+                <Form.Control name="email" value={seller.email}  required onChange={handleChange} type="text" placeholder="Enter User Email" />
                 <Form.Text className="text-muted">
                {error.emailError}
                 </Form.Text>
