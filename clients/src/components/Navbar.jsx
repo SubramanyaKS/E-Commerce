@@ -35,7 +35,7 @@ const NavBar =()=>{
             {sa?<>
               <Nav.Link style={{textDecoration: "none"}}  onClick={LogoutS}> Log Out </Nav.Link>
             </>:<>
-            
+            <Nav.Link href="/home">Home</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link href="/signup">Signup</Nav.Link>
             <Nav.Link href="/seller">Seller</Nav.Link>
