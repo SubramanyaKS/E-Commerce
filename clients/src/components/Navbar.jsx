@@ -33,6 +33,7 @@ const NavBar =()=>{
           <Nav.Link href="/about">About</Nav.Link>
           <Nav.Link href="/contact">Contact</Nav.Link>
             {sa?<>
+            <Nav.Link href="/addproduct">Add Product</Nav.Link>
               <Nav.Link style={{textDecoration: "none"}}  onClick={LogoutS}> Log Out </Nav.Link>
             </>:<>
             <Nav.Link href="/home">Home</Nav.Link>
