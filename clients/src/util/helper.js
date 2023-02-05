@@ -1,3 +1,4 @@
+import axios from "axios";
 export const LogoutS=()=>{
     sessionStorage.removeItem('sid');
     sessionStorage.removeItem('sAuthenticated');
@@ -8,3 +9,7 @@ export const LogoutU=()=>{
     sessionStorage.removeItem('uAuthenticated');
     window.location.href = "/home";
 };
+export const fetchProduct=()=>{
+    const result=axios.get("http://localhost:4000/products");
+    return result.data;
+}   
