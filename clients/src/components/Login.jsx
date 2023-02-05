@@ -16,7 +16,7 @@ const Login = () => {
   
   const userLogin= async (event)=>{
     event.preventDefault();
-    await axios.post("http://localhost:4000/users/login",users)
+    await axios.post("http://localhost:4000/users/",users)
     .then((res)=>{
       console.log(res.data);
       if(res.data){
