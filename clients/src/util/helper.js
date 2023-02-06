@@ -12,4 +12,4 @@ export const LogoutU=()=>{
 export const fetchProduct=()=>{
     const result=axios.get("http://localhost:4000/products");
     return result.data;
-}   
+}
