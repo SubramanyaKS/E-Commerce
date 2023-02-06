@@ -16,7 +16,7 @@ const Item=({name,price,category,color,description,image,id})=>{
     
   }
     return(
-        <div class="mb-3">
+        <div className="mb-3">
             
         <Card style={{ width: '25rem', height:'35rem' }}>
         <Card.Img style={{height:'10rem'}} variant="top" src={image} />
