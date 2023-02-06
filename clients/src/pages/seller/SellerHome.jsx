@@ -58,7 +58,7 @@ const SellerHome=()=>{
           <Card.Text><b>Category: </b>{article.category}</Card.Text>
           <Card.Text><b>Color: </b>{article.color}</Card.Text>
           <Card.Text><b>Price: </b>{article.price}</Card.Text>
-          <Button onClick={()=>deleteProduct(article.id)} variant="primary">Delete</Button>
+          <Button value='Submit' type="submit" onClick={()=>deleteProduct(article.id)} variant="primary">Delete</Button>
           
         </Card.Body>
       </Card>
