@@ -11,13 +11,18 @@ import UserSucess from './components/UserSucess';
 import 'bootstrap/dist/css/bootstrap.css';
 import SellerLogin from './pages/seller/SellerLogIn';
 import SellerSignUp from './pages/seller/SellerSignUp';
-import AddProduct from './components/AddProduct';
-
+import AddProduct from './pages/AddProduct';
+import Cart from './components/Cart';
+import { CartProvider } from 'react-use-cart';
+import Carts from './components/Carts';
+import CartItem from './components/CartItem';
 function App() {
   return (
     <BrowserRouter>
+    <CartProvider>
     <NavBar/>
       <Routes>
+        <Route path="/carts" element={<Carts/>} />
         <Route path="/" element={<Index />}/>
         <Route path="/home" element={<Index />}/>
         <Route path="/about" element={<About />}/>
@@ -29,7 +34,10 @@ function App() {
         <Route path="seller-signup" element={<SellerSignUp/>} />
         <Route path="/signup" element={<SignUp />}/>
         <Route path="/addproduct" element={<AddProduct />}/>
+        <Route path="/cart" element={<Cart />}/>
+        <Route path="/items" element={<CartItem/>} />
       </Routes>
+      </CartProvider>
       <Footer/>
     </BrowserRouter>
   );
