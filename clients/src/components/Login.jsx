@@ -16,13 +16,16 @@ const Login = () => {
   
   const userLogin= async (event)=>{
     event.preventDefault();
-    await axios.post("http://localhost:4000/users/",users)
+    await axios.get(`http://localhost:4000/users?email=${users.email}&&password=${users.password}`)
     .then((res)=>{
-      console.log(res.data);
+      // setTimeout(() => {
+      //   console.log("Data",res.data[0].id);
+      // }, 1000);
+      
       if(res.data){
-        sessionStorage.setItem("uid",users.userID);
+        sessionStorage.setItem("uid",res.data[0].id);
       sessionStorage.setItem("uAuthenticated",true);
-      window.location.href = "/home";
+      window.location.href = "/";
       }
       else{
         setErrorMsg("Enter Valid Credentials");
@@ -41,10 +44,10 @@ const Login = () => {
   }
   const handleChange = (event) => {
     setUsers({ ...users, [event.target.name]: event.target.value })
-    if(users.email.length()>0 && users.password.length()>0){
+    if(users.email.length>0 && users.password.length>0){
       setValid(true);
     }
-    else if(users.email.length()<0){
+    else if(users.email.length<0){
       setError({...error,emailError:"Enter valid Email"})
     }
     
@@ -60,7 +63,7 @@ const Login = () => {
           <Form onSubmit={userLogin}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>User Email</Form.Label>
-              <Form.Control name="email" value={users.email}  required onChange={handleChange} type="email" placeholder="Enter User Id" />
+              <Form.Control name="email" value={users.email}  required onChange={handleChange} autoComplete="current-user" type="email" placeholder="Enter User Id" />
               <Form.Text className="text-muted">
              {error.idError}
               </Form.Text>
@@ -68,11 +71,11 @@ const Login = () => {
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control name="password" value={users.password} onChange={handleChange} type="password" placeholder="Password" />
+              <Form.Control name="password" value={users.password} onChange={handleChange} type="password"  autoComplete="current-password" placeholder="Password" />
             <Form.Text className="text-muted"> {error.passwordError}</Form.Text>
             </Form.Group>
 
-            <Button disabled={!valid} value="Submit" className="button" variant="primary" type="submit">
+            <Button  value="Submit" className="button" variant="primary" type="submit">
               Submit
             </Button>
             {(errorMsg) ? <p style={{color:"red"}}>{errorMsg}</p> : null}
