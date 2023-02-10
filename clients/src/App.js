@@ -13,13 +13,11 @@ import SellerLogin from './pages/seller/SellerLogIn';
 import SellerSignUp from './pages/seller/SellerSignUp';
 import AddProduct from './pages/AddProduct';
 import Cart from './components/Cart';
-import { CartProvider } from 'react-use-cart';
 import Carts from './components/Carts';
 import CartItem from './components/CartItem';
 function App() {
   return (
     <BrowserRouter>
-    <CartProvider>
     <NavBar/>
       <Routes>
         <Route path="/carts" element={<Carts/>} />
@@ -37,7 +35,6 @@ function App() {
         <Route path="/cart" element={<Cart />}/>
         <Route path="/items" element={<CartItem/>} />
       </Routes>
-      </CartProvider>
       <Footer/>
     </BrowserRouter>
   );
