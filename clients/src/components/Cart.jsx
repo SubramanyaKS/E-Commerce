@@ -1,39 +1,30 @@
-import React from 'react'
-import { useCart } from 'react-use-cart';
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
+import { useFetch } from '../hooks/useFetch';
+import axios from 'axios';
 
 const Cart = () => {
-    const {
-        isEmpty,
-        totalUniqueItems,
-        items,
-        updateItemQuantity,
-        removeItem,
-      } = useCart();
-      if (isEmpty) return <p>Your cart is empty</p>;
-  return (
-    <div>
-      <h1>Cart ({totalUniqueItems})</h1>
+  const {title} = useParams();
+  const [product,setProduct] = useState([null]);
 
-<ul>
-  {items.map((item) => (
-    <li key={item.id}>
-      {item.quantity} x {item.name} &mdash;
-      <button
-        onClick={() => updateItemQuantity(item.id, item.quantity - 1)}
-      >
-        -
-      </button>
-      <button
-        onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
-      >
-        +
-      </button>
-      <button onClick={() => removeItem(item.id)}>&times;</button>
-    </li>
-  ))}
-</ul>
-    </div>
+    useEffect(() => {
+      const news = async () => {
+        axios
+          .get(`http://localhost:4000/products/${title}`)
+          .then((response) => {
+            setProduct(response.data);
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      };
+      console.log("News",news());
+    }, []);
+  
+  return (
+    <h1>{title}</h1>
   )
 }
 
-export default Cart
+export default Cart;
