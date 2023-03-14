@@ -3,7 +3,7 @@ import React, {createContext, useState} from 'react'
 export const ShopContext = createContext(null);
 
 export const ShoppingCartProvider = (props) => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(null);
   const [productItems, setProductItems] = useState([]);
   
   return (
