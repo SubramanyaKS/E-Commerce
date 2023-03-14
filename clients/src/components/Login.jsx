@@ -23,7 +23,7 @@ const Login = () => {
       // }, 1000);
       
       if(res.data){
-        sessionStorage.setItem("uid",res.data[0].id);
+       // sessionStorage.setItem("uid",res.data[0].id);
       sessionStorage.setItem("uAuthenticated",true);
       window.location.href = "/";
       }
