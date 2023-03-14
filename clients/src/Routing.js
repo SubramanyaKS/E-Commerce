@@ -32,7 +32,7 @@ function Routing() {
         <Route path="seller-signup" element={<SellerSignUp/>} />
         <Route path="/signup" element={<SignUp />}/>
         <Route path="/addproduct" element={<AddProduct />}/>
-        <Route path="/cart" element={<Cart />}/>
+        <Route path="/cart/:title" element={<Cart />}/>
         {/* <Route path="/cartdetails" element={<CartItem/>}/> */}
         {/* <Route path="/items" element={<CartItem/>} /> */}
       </Routes>
