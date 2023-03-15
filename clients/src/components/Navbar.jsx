@@ -6,11 +6,8 @@ import Button from 'react-bootstrap/Button';
 import {FaShoppingCart} from '@react-icons/all-files/fa/FaShoppingCart'
 import {FcSearch} from '@react-icons/all-files/fc/FcSearch';
 import 'bootstrap/dist/css/bootstrap.css';
-import { LogoutS } from '../util/helper';
 
 const NavBar =()=>{
-  let sa = sessionStorage.getItem('sid');
-  let ua = sessionStorage.getItem('uid');
  
     return(
         
@@ -35,19 +32,9 @@ const NavBar =()=>{
           <Nav.Link href="/about">About</Nav.Link>
           <Nav.Link href="/contact">Contact</Nav.Link>
             
-            {sa?<>
-            <Nav.Link href="/addproduct">Add Product</Nav.Link>
-              <Nav.Link style={{textDecoration: "none"}}  onClick={LogoutS}> Log Out </Nav.Link>
-            </>:<>
-            <Nav.Link href="/carts">Carts</Nav.Link>
-            <Nav.Link href="/items" >Item</Nav.Link>
-            {/* <Nav.Link href="/cart">Cart <p  style={{display:'inline-flex'}}className="add-cart">3</p></Nav.Link> */}
-            <Nav.Link href="/login">Login</Nav.Link>
-            <Nav.Link href="/signup">Signup</Nav.Link>
-            <Nav.Link href="/seller">Seller</Nav.Link>
+           
             
-            </>
-            }
+    
           </Nav>
           
         </Navbar.Collapse>
