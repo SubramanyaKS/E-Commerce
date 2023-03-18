@@ -1,7 +1,46 @@
+import { useEffect } from "react";
+// import { useState } from "react";
+import axios from "axios";
+import ProductCard from "../components/ProductCard";
+import '../assets/css/index.css';
+import { ProductState } from "../context/ProductContext";
+import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import PCards from "../components/PCards";
 
 const Index = ()=>{
+  // const [state,setState] = useState([]);
+  const {product, setProduct} = ProductState();
+  const navigate = useNavigate();
+  useEffect(()=>{
+    // const data =fetchProduct();
+      axios.get("http://localhost:4000/products")
+    .then((res)=>{
+        console.log("Result data ",typeof res.data);
+        // setState(res.data);
+        setProduct(res.data);
+        console.log("Dta inside context", typeof product)
+        //console.log("Data",product);
+    })
+    //console.log(fetchProduct());
+  },[])
   return(
-    <div>Home Page</div>
+    <section>
+      <div>
+        <h1>Home page</h1>
+        {/* <p>{product}</p> */}
+      </div>
+
+      <div style={{ display: "flex", flexWrap: "wrap"}}>
+      {product.map((item)=>(
+         <div className="mb-3" key={item.id}>
+        <PCards  article={item}/>
+        
+        </div>
+      ))}
+      </div>
+      
+    </section>
 
   );
     
