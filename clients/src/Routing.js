@@ -7,6 +7,7 @@ import NavBar from './components/Navbar';
 import 'bootstrap/dist/css/bootstrap.css';
 import AddToCart from './pages/AddToCart';
 import ErrorPage from './pages/ErrorPage';
+import SingleProduct from './pages/SingleProduct';
 function Routing() {
   return (
     <BrowserRouter>
@@ -16,6 +17,7 @@ function Routing() {
         <Route path="/home" element={<Index />}/>
         <Route path="/about" element={<About />}/>
         <Route path="/addtocart/:id" element={<AddToCart/>}/>
+        <Route path="/singleproduct/:id" element={<SingleProduct/>}/>
         <Route path ="*" element ={<ErrorPage/>} />
       </Routes>
       <Footer/>
