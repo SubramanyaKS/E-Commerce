@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useParams } from 'react-router-dom';
 import { ProductState } from '../context/ProductContext';
 import { Button, Card } from 'react-bootstrap';
@@ -6,6 +6,7 @@ import { Button, Card } from 'react-bootstrap';
 
 
 const AddToCart = () => {
+  const [quantity, setQuantity] = useState(1);
   const {product} = ProductState();
     let {id} = useParams();
     
@@ -20,8 +21,9 @@ const AddToCart = () => {
               <Card.Text>{article.name}</Card.Text>
               <Card.Text>{article.price}</Card.Text>
               <div style={{flexDirection:"row"}}>
-                <Button>+</Button>
-                <Button>-</Button>
+                <Button onClick={()=>setQuantity(quantity+1)}>+</Button>
+                <p>{quantity}</p>
+                <Button onClick={()=>setQuantity(quantity+1)}>-</Button>
               </div>
             </Card.Body>
           </Card>
