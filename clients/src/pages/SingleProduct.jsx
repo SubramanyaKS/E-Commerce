@@ -13,9 +13,9 @@ const SingleProduct = () => {
     <div>
         {product.map((article)=>(
             <div className="mb-3" key={article.id}>
-          <p>{String(article.id)===id?<ProductCard article={article}/>:null}</p>
+          {String(article.id)===id?<ProductCard article={article}/>:null}
           </div>))}
-
+          
     </div>
   )
 }
