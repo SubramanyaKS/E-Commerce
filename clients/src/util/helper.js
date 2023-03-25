@@ -10,6 +10,8 @@ export const LogoutU=()=>{
     window.location.href = "/home";
 };
 export const fetchProduct=()=>{
-    const result=axios.get("http://localhost:4000/products");
-    return result.data;
+    axios.get("http://localhost:4000/products")
+    .then((res)=>{
+        console.log("Result data inside fetchProduct",res.data);
+    });    
 }
