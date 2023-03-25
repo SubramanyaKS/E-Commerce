@@ -4,7 +4,7 @@ const Cart = createContext();
 
 
 const ShopContext = ({children}) => {
-    const [cart,setCart]= useState([]);
+    const [cart,setCart]= useState({articlename:'',price:'',quantity:''});
     
   return (
     <Cart.Provider value={{cart,setCart}}>{children}</Cart.Provider>
