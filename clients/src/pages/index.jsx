@@ -1,11 +1,9 @@
 import { useEffect } from "react";
 // import { useState } from "react";
 import axios from "axios";
-import ProductCard from "../components/ProductCard";
 import '../assets/css/index.css';
 import { ProductState } from "../context/ProductContext";
 import { useNavigate } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import PCards from "../components/PCards";
 
 const Index = ()=>{
@@ -14,7 +12,8 @@ const Index = ()=>{
   const navigate = useNavigate();
   useEffect(()=>{
     // const data =fetchProduct();
-      axios.get("http://localhost:4000/products")
+    //http://localhost:4000/products
+      axios.get("https://fakestoreapi.com/products")
     .then((res)=>{
         console.log("Result data ",typeof res.data);
         // setState(res.data);
