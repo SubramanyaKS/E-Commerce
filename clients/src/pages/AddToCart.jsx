@@ -12,10 +12,12 @@ const AddToCart = () => {
   const {cart,setCart} = CartState();
     let {id} = useParams();
 
-    const AddedCart=({name,price,quantity})=>{
-        setCart({articlename:name,price:price,quantity:quantity})
-        console.log(cart);
+    const AddedCart=(name,price,quantity)=>{
+      console.log(name);
+        setCart({...cart,title:name,price:price,quantity:quantity})
+        //console.log(cart);
       }
+      console.log(cart);
     
   return (
     <section >
@@ -32,7 +34,7 @@ const AddToCart = () => {
                 <p>{quantity}</p>
                 <Button onClick={()=>setQuantity(quantity-1)}>-</Button>
               </div>
-              <Button style={{marginTop:"10px"}} onClick={()=>AddedCart(article.name,article.price,quantity)}>Added</Button>
+              <Button style={{marginTop:"10px"}} onClick={()=>AddedCart(article.title,article.price,quantity)}>Added</Button>
             </Card.Body>
           </Card>
           :null}
