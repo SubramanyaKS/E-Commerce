@@ -6,7 +6,9 @@ import Button from 'react-bootstrap/Button';
 import {FaShoppingCart} from '@react-icons/all-files/fa/FaShoppingCart'
 import {FcSearch} from '@react-icons/all-files/fc/FcSearch';
 import 'bootstrap/dist/css/bootstrap.css';
-
+import StoreIcon from '@mui/icons-material/Store';
+import Badge from '@mui/material/Badge';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 const NavBar =()=>{
  
     return(
@@ -14,7 +16,7 @@ const NavBar =()=>{
         <Navbar sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
                 
-                <Navbar.Brand style={{fontFamily:"cursive"}} href="/home"><FaShoppingCart style={{ color: 'white'}}/> Namma nadu kart</Navbar.Brand>
+                <Navbar.Brand style={{fontFamily:"cursive"}} href="/home"><StoreIcon style={{ color: 'white'}}/> Namma nadu kart</Navbar.Brand>
                 
                 <Form className="d-flex">
             <Form.Control
@@ -31,7 +33,9 @@ const NavBar =()=>{
           <Nav.Link href="/home">Home</Nav.Link>
           <Nav.Link href="/about">About</Nav.Link>
           <Nav.Link href="/contact">Contact</Nav.Link>
-            
+          <Badge badgeContent={4} color="primary">
+      <ShoppingCartIcon  style={{ color: 'white'}} />
+    </Badge>
            
             
     
