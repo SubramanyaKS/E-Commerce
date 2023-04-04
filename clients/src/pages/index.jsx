@@ -5,6 +5,7 @@ import '../assets/css/index.css';
 import { ProductState } from "../context/ProductContext";
 import { useNavigate } from "react-router-dom";
 import PCards from "../components/PCards";
+import TopCarousal from "../components/TopCarousal";
 
 const Index = ()=>{
   // const [state,setState] = useState([]);
@@ -27,13 +28,14 @@ const Index = ()=>{
     <section>
       <div style={{marginTop:"10px"}}>
         {/* carousal */}
+        <TopCarousal/>
       </div>
-
-      <div style={{ display: "flex", flexWrap: "wrap",}}>
+      <h3 className="text-center">Products:</h3>
+      <div style={{ display: "flex", flexWrap: "wrap",marginTop:"30px"}}>
+        
       {product.map((item)=>(
          <div className="mb-3" key={item.id}>
         <PCards  article={item}/>
-        
         </div>
       ))}
       </div>
