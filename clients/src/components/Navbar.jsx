@@ -16,7 +16,7 @@ const NavBar =()=>{
         <Navbar className="shadow-lg p-3 mb-5" sticky="top" collapseOnSelect expand="lg" bg="white" variant="dark">
             <Container>
                 
-                <Navbar.Brand style={{fontFamily:"cursive",color:"black"}} href="/home"><StoreIcon style={{ color: 'black'}}/> Namma nadu kart</Navbar.Brand>
+                <Navbar.Brand style={{fontFamily:"cursive",color:"black"}} href="/home"><StoreIcon style={{ color: 'black'}}/> Namkart</Navbar.Brand>
                 
                 <Form className="d-flex">
             <Form.Control
