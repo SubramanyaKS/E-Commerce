@@ -25,12 +25,11 @@ const Index = ()=>{
   },[])
   return(
     <section>
-      <div>
-        <h1>Home page</h1>
-        {/* <p>{product}</p> */}
+      <div style={{marginTop:"10px"}}>
+        {/* carousal */}
       </div>
 
-      <div style={{ display: "flex", flexWrap: "wrap"}}>
+      <div style={{ display: "flex", flexWrap: "wrap",}}>
       {product.map((item)=>(
          <div className="mb-3" key={item.id}>
         <PCards  article={item}/>
