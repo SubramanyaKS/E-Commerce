@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import {FaShoppingCart} from '@react-icons/all-files/fa/FaShoppingCart'
+// import {FaShoppingCart} from '@react-icons/all-files/fa/FaShoppingCart'
 import {FcSearch} from '@react-icons/all-files/fc/FcSearch';
 import 'bootstrap/dist/css/bootstrap.css';
 import StoreIcon from '@mui/icons-material/Store';
@@ -13,10 +13,10 @@ const NavBar =()=>{
  
     return(
         
-        <Navbar sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar className="shadow-lg p-3 mb-5" sticky="top" collapseOnSelect expand="lg" bg="white" variant="dark">
             <Container>
                 
-                <Navbar.Brand style={{fontFamily:"cursive"}} href="/home"><StoreIcon style={{ color: 'white'}}/> Namma nadu kart</Navbar.Brand>
+                <Navbar.Brand style={{fontFamily:"cursive",color:"black"}} href="/home"><StoreIcon style={{ color: 'black'}}/> Namma nadu kart</Navbar.Brand>
                 
                 <Form className="d-flex">
             <Form.Control
@@ -30,12 +30,12 @@ const NavBar =()=>{
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse className="justify-content-end">
           <Nav>
-          <Nav.Link href="/home">Home</Nav.Link>
-          <Nav.Link href="/about">About</Nav.Link>
-          <Nav.Link href="/contact">Contact</Nav.Link>
-          <Badge badgeContent={4} color="primary">
-      <ShoppingCartIcon  style={{ color: 'white'}} />
-    </Badge>
+          <Nav.Link style={{color:"white",backgroundColor:"black", margin:"1px"}} href="/home">Home</Nav.Link>
+          <Nav.Link style={{color:"white",backgroundColor:"black", margin:"1px"}} href="/about">About</Nav.Link>
+          <Nav.Link style={{color:"white",backgroundColor:"black", margin:"1px"}} href="/contact">Contact</Nav.Link>
+          <Nav.Link><Badge badgeContent={4} color="primary">
+      <ShoppingCartIcon  style={{ color: 'black'}} />
+    </Badge></Nav.Link>
            
             
     
