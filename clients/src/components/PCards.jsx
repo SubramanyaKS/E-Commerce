@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const PCards = ({article}) => {
   const navigate = useNavigate();
   return (
-    <Card className="shadow-lg" style={{ width: '25rem', height:'25rem' }}>
+    <Card className="shadow-lg p-3 mb-5" style={{ width: '25rem', height:'25rem' }}>
       <Card.Img style={{height:'10rem', width:'20rem'}} variant="top" src={article.image} />
       <Card.Body>
       <Card.Title>{article.title}</Card.Title>
