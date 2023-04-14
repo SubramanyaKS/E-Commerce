@@ -8,7 +8,7 @@ const SingleProduct = () => {
     const {id}= useParams();
     // console.log(typeof id," ",id);
     const {product} = ProductState();
-    const navigate= useNavigate();
+    // const navigate= useNavigate();
   return (
     <div>
         {product.map((article)=>(
