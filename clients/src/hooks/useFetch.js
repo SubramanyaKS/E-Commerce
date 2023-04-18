@@ -1,15 +1,19 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export const useFetch=(url) =>{
-    const [data, setData] = useState(null);
-    const get=()=>{
-        axios.get(url).then((res)=>{
+export const useFetch=(url,setData) =>{
+    // const [data, setData] = useState(null);
+    useEffect(()=>{
+          axios.get(url)
+        .then((res)=>{
+            console.log("Result data ",typeof res.data);
             setData(res.data);
-        }).catch((error) => {
-            console.log(error);
-          });
-    }
-    get();
-    return ({data, setData});
+            // console.log("Data inside context", typeof data)
+            
+        }).catch((e)=>{
+            console.log("Error",e)
+        })
+      },[url])
+
+    // return {data}
 }
