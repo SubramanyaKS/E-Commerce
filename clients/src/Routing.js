@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import AddToCart from './pages/AddToCart';
 import ErrorPage from './pages/ErrorPage';
 import SingleProduct from './pages/SingleProduct';
+import ShowCart from './pages/ShowCart';
 function Routing() {
   return (
     <BrowserRouter>
@@ -15,7 +16,8 @@ function Routing() {
       <Routes>
         <Route path="/" element={<Index />}/>
         <Route path="/home" element={<Index />}/>
-        <Route path="/about" element={<About />}/>
+        <Route path="/about" element={<About />}/>        
+        <Route path="/showcart" element={<ShowCart />}/>        
         <Route path="/addtocart/:id" element={<AddToCart/>}/>
         <Route path="/singleproduct/:id" element={<SingleProduct/>}/>
         <Route path ="*" element ={<ErrorPage/>} />
