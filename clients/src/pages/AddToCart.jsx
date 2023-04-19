@@ -4,13 +4,14 @@ import { ProductState } from '../context/ProductContext';
 import { Button, Card } from 'react-bootstrap';
 import { CartState } from '../context/ShopContext';
 // import ProductCard from '../components/ProductCard';
-
+import { useNavigate } from "react-router";
 
 const AddToCart = () => {
   const [quantity, setQuantity] = useState(1);
   const {product} = ProductState();
   const {cart,setCart} = CartState();
     let {id} = useParams();
+    const navigate= new useNavigate();
 
     const AddedCart=(name,price,quantity)=>{
       console.log(name);
@@ -35,11 +36,12 @@ const AddToCart = () => {
                 <Button onClick={()=>setQuantity(quantity-1)}>-</Button>
               </div>
               <Button style={{marginTop:"10px"}} onClick={()=>AddedCart(article.title,article.price,quantity)}>Added</Button>
+              <Button onClick={()=>navigate('/showcart')}>Show cart</Button>
             </Card.Body>
           </Card>
           :null}
           </div>))}
-          <p>{cart.articlename}</p>
+          
         {/* <ProductCard article={data}/> */}
         
     </section>
