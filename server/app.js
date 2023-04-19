@@ -1,6 +1,7 @@
 const express = require('express');
 const errorLogger = require('./services/errorLogger');
 const userroute= require('./routes/userRouting');
+const productroute= require('./routes/productRouting');
 const cors = require('cors');
 const app= express();
 
@@ -15,6 +16,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/users', userroute);
+app.use('/product', productroute);
 app.get("/",(req,res)=>{
     res.send("hello");
 });
