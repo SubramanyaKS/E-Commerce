@@ -5,9 +5,10 @@ const Cart = createContext();
 
 const ShopContext = ({children}) => {
     const [cart,setCart]= useState({title:'',quantity:'',price:''});
+    const [count, setCount] = useState(1);
     
   return (
-    <Cart.Provider value={{cart,setCart}}>{children}</Cart.Provider>
+    <Cart.Provider value={{cart,setCart,count,setCount}}>{children}</Cart.Provider>
   )
 }
 
