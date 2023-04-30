@@ -1,10 +1,10 @@
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
-import Form from 'react-bootstrap/Form';
+// import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 // import {FaShoppingCart} from '@react-icons/all-files/fa/FaShoppingCart'
-import {FcSearch} from '@react-icons/all-files/fc/FcSearch';
+// import {FcSearch} from '@react-icons/all-files/fc/FcSearch';
 import 'bootstrap/dist/css/bootstrap.css';
 import StoreIcon from '@mui/icons-material/Store';
 import Badge from '@mui/material/Badge';
@@ -20,15 +20,15 @@ const NavBar =()=>{
                 
                 <Navbar.Brand style={{fontFamily:"cursive",color:"black"}} href="/home"><StoreIcon style={{ color: 'black'}}/> Namkart</Navbar.Brand>
                 
-                <Form className="d-flex">
-            <Form.Control
+                {/* <Form className="d-flex"> */}
+            {/* <Form.Control
               type="search"
               placeholder="Search"
               className="me-2"
               aria-label="Search"
             />
             <Button variant="outline-success"><FcSearch/></Button>
-          </Form>
+          </Form> */}
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse className="justify-content-end">
           <Nav>
