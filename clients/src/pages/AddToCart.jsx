@@ -26,17 +26,17 @@ const AddToCart = () => {
         {product.map((article)=>(
             <div className="mb-3" key={article.id}>
           {String(article.id)===id?
-          <Card style={{display:"flex",flexDirection:"row"}}>
+          <Card >
             <Card.Body >
               <Card.Text><b>{article.title}</b></Card.Text>
-              <Card.Text>${article.price*quantity}</Card.Text>
+              <Card.Text><b>Total Amount: </b>${article.price*quantity}</Card.Text>
               <div style={{display:"flex",flexDirection:"row"}}>
                 <Button onClick={()=>setQuantity(quantity+1)}>+</Button>
-                <p>{quantity}</p>
+                <p style={{padding:"1%"}}>{quantity}</p>
                 <Button onClick={()=>setQuantity(quantity-1)}>-</Button>
               </div>
-              <Button style={{marginTop:"10px"}} onClick={()=>AddedCart(article.title,article.price,quantity)}>Added</Button>
-              <Button onClick={()=>navigate('/showcart')}>Show cart</Button>
+              <Button style={{marginTop:"20px",marginRight:"10px"}} onClick={()=>AddedCart(article.title,article.price,quantity)}>Added</Button>
+              <Button  style={{marginTop:"20px"}} onClick={()=>navigate('/showcart')}>Show cart</Button>
             </Card.Body>
           </Card>
           :null}
