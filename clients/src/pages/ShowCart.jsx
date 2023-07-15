@@ -6,6 +6,7 @@ const ShowCart = () => {
   return (
     <div>
        <p> {cart.title}</p>
+       <p>{}</p>
     </div>
   )
 }
