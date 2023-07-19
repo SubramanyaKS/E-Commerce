@@ -9,13 +9,14 @@ import { useNavigate } from "react-router";
 const AddToCart = () => {
   const [quantity, setQuantity] = useState(1);
   const {product} = ProductState();
-  const {cart,setCart} = CartState();
+  const {cart,setCart,setCount} = CartState();
     let {id} = useParams();
     const navigate= new useNavigate();
 
     const AddedCart=(name,price,quantity)=>{
       console.log(name);
         setCart({...cart,title:name,price:price,quantity:quantity})
+        setCount((prev)=>prev+1);
         //console.log(cart);
       }
       console.log(cart);
@@ -41,9 +42,6 @@ const AddToCart = () => {
           </Card>
           :null}
           </div>))}
-          
-        {/* <ProductCard article={data}/> */}
-        
     </section>
   )
 }
